@@ -27,4 +27,10 @@ void Merge_L(LinkList, LinkList);//连接两个链表
 
 Status DeleteAndInsertSub(LinkList, LinkList, int, int, int);
 
-Status DeleteBetween(LinkList, int, int);
+Status DeleteBetween(LinkList, int, int); //删除链表中介于两个值之间的节点
+
+Status Reverse_L(LinkList *); // 逆置链表
+
+void DestoryR_L(LinkList);// 逆向摧毁
+
+void VisitR_L(LinkList); //逆向遍历

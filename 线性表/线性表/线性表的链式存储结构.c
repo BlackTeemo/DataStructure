@@ -236,24 +236,72 @@ Status DeleteBetween(LinkList L, int Min_k, int Max_k)
 		Pb = Pb->next;
 	}
 
-	if (Pa == NULL)
+	//if (Pa == NULL)
+	//{
+		//printf("表中没有比 Max_k 大的数\n");
+	//}
+	
+	
+	LinkList Tmp = PPerror->next;
+	LinkList Tmp2 = NULL;
+	while (Tmp->next != Pa)
 	{
-		printf("表中没有比 Max_k 大的数\n");
-	}
-	else
-	{
-		LinkList Tmp = PPerror->next;
-		LinkList Tmp2 = NULL;
-		while (Tmp->next != Pa)
-		{
-			Tmp2 = Tmp->next;
-			free(Tmp);
-			Tmp = Tmp2;
-		}
-		PPerror->next = Tmp->next;
+		Tmp2 = Tmp->next;
 		free(Tmp);
+		Tmp = Tmp2;
 	}
+	PPerror->next = Tmp->next;
+	free(Tmp);
+
+	return(OK);
+	
+}
+
+Status Reverse_L(LinkList *L)
+{
+	if (!(*L))
+		return ERROR;
+	LinkList Pa = (*L)->next;
+	LinkList Pb = (*L)->next;
+	LinkList Pc = *L;
+	LinkList Pd = NULL;
+	while (Pa != NULL)
+	{
+		Pd = Pb;
+		Pb = Pa->next;
+		Pa->next = Pc;
+		Pa = Pb;
+		Pc = Pd;
+	}
+	(*L)->next = NULL;
+	*L = Pc;
+	//(*L)->next = NULL;
+	
+	return OK;
 }
 
 
+void DestoryR_L(LinkList L)
+{
+	if (!L)
+		return;
+	LinkList P = L;
+	while (P->next != NULL)
+	{
+		L = P->next;
+		free(P);
+		P = L; 
+	}
+}
 
+void VisitR_L(LinkList L)
+{
+	if (!L)
+		return;
+	while (L->next != NULL)
+	{
+		printf("%d ", L->data);
+		L = L->next;
+	}
+	printf("\n");
+}
