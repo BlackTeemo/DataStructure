@@ -32,3 +32,5 @@ void DeleteK(SqList*, int, int); //删除表中第i个元素起的K个元素
 void OrderInsert_Sq(SqList*, ElemType); //插入一个元素 保持该顺序表的有序性
 
 Status Compare_Sq(SqList*, SqList*); //前缀比较法
+
+Status Intersection_Sq(SqList* ,SqList*); //顺序表求交集

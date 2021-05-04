@@ -208,3 +208,27 @@ Status Compare_Sq(SqList *L1, SqList *L2)
 	else if (i > L1->length && i == L2->length)
 		return -1;  //A > B
 }
+
+
+Status Intersection_Sq(SqList* L1, SqList* L2)
+{
+	int n = 0;
+	int T = 0;
+	int Arrindex = 0;
+	while (n < L1->length && T < L2->length)
+	{
+		if (L1->elem[n] == L2->elem[T])
+		{
+			L1->elem[Arrindex] = L1->elem[n];
+			n++;
+			T++;
+			Arrindex++;
+		}
+		else if (L1->elem[n] < L2->elem[T])
+			n++;
+		else
+			T++;		
+	}
+	L1->length = Arrindex ;
+	return OK;
+}
