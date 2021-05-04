@@ -305,3 +305,36 @@ void VisitR_L(LinkList L)
 	}
 	printf("\n");
 }
+
+void LessReverse_L(LinkList *La, LinkList *Lb)
+{
+	LinkList Pa, Pb;
+	Pa = (*La)->next;
+	Pb = (*Lb)->next;
+	(*Lb)->next = NULL;
+	LinkList Perror = La;
+	while (Pa && Pb)
+	{
+		if (Pa->data < Pb->data)
+		{
+			Perror->next = Pa;
+			Perror = Pa;
+			Pa = Pa->next;
+		}
+		else
+		{
+			Perror->next = Pb;
+			Perror = Pb;
+			Pb = Pb->next;
+		}
+	}
+	if (Pa == NULL && Pb != NULL)
+		Perror->next = Pb;
+	else if( Pa != NULL && Pb == NULL)
+		Perror->next = Pa;
+	
+	//Perror->next = Pa?Pa:Pb;
+
+	Visit_L(*La);
+	Reverse_L(La);
+}

@@ -34,3 +34,7 @@ Status Reverse_L(LinkList *); // 逆置链表
 void DestoryR_L(LinkList);// 逆向摧毁
 
 void VisitR_L(LinkList); //逆向遍历
+
+void LessReverse_L(LinkList *,LinkList *);
+
+
